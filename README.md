@@ -1,5 +1,5 @@
 # safe-skin-guidance-system
-A safety-first multimodal AI assistant designed to promote early skin awareness using MedGemma (HAI-DEF) and embedding-driven agent orchestration.
+A safety-first multimodal AI assistant designed to promote early skin awareness and guidance using MedGemma (HAI-DEF) and embedding-driven agent orchestration.
 
 ---
 
