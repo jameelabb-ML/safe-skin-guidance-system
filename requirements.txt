@@ -1,0 +1,23 @@
+# UI
+gradio
+spaces
+
+# Image processing
+Pillow
+numpy
+scikit-learn
+opencv-python
+
+# PyTorch
+torch
+torchvision
+
+# HuggingFace / MedGemma
+transformers
+accelerate
+
+# OpenCLIP
+open_clip_torch
+ftfy
+regex
+tqdm
