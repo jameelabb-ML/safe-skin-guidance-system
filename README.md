@@ -107,7 +107,7 @@ This project does not provide medical advice.
 ## ☁ Deployment
 
 Live Demo:
-Link here : https://huggingface.co/spaces/jameelabibi/skin_app
+https://huggingface.co/spaces/jameelabibi/skin_app
 
 The system was developed without access to a local GPU PC and optimized for shared GPU environments on Hugging Face Spaces.
 
