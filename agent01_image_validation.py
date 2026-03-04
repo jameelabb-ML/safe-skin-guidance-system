@@ -32,10 +32,8 @@ normal_skin_embeddings = load_embeddings(NORMAL_SKIN_EMB_PATH)
 def is_likely_skin(image: Image.Image) -> bool:
     """
     This checks whether the given image likely contains human skin.
-
     Parameters:
     - image (PIL.Image): Uploaded image from the user
-
     Returns:
     - True  -> Image likely contains skin
     - False -> Image likely NOT skin
@@ -54,11 +52,12 @@ def is_likely_skin(image: Image.Image) -> bool:
     # V -> Value(brightness)
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 
-    # Define a broad HSV range that covers most human skin tones
-    lower_skin = np.array([0, 20, 40], dtype=np.uint8)
-    upper_skin = np.array([25, 255, 255], dtype=np.uint8)
+    # Define a broad HSV range that covers diverse human skin tones, including dark skin
+    # We lower the Saturation floor to 10 and the Value floor to 10 to be inclusive.
+    lower_skin = np.array([0, 10, 10], dtype=np.uint8)
+    upper_skin = np.array([30, 255, 255], dtype=np.uint8)
 
-    # Create a binary mask where skin-like pixels are white,now what does this mean?
+    # Create a binary mask where skin-like pixels are white
     # It means :
     # checks every pixel in the HSV image
     # If the pixel’s HSV values fall inside the given range -> mark it as 255 (white)
@@ -70,7 +69,8 @@ def is_likely_skin(image: Image.Image) -> bool:
     skin_pixel_ratio = np.sum(skin_mask > 0) / skin_mask.size
 
     # If enough pixels look like skin, accept the image
-    return skin_pixel_ratio > 0.27
+    return skin_pixel_ratio > 0.26
+
 
 # Function: Embedding-based Similarity Check
 def similar_to_normal_skin(image: Image.Image, threshold: float = 0.75) -> bool:
@@ -126,4 +126,5 @@ def validate_skin_image(image: Image.Image) -> bool:
 
     # Passed all checks
     print("Image accepted by Image Validation Agent")
+
     return True
